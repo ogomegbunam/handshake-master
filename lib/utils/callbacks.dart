@@ -1,0 +1,1 @@
+typedef OnValueChanged = void Function(String value);
