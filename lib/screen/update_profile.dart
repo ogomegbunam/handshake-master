@@ -60,41 +60,73 @@ class _UpdateProfileState extends State<UpdateProfile> {
     return Scaffold(
       key: _scaffoldKey,
       backgroundColor: kwhite,
-      appBar: AppBar(
-        backgroundColor: kwhite,
-        title: const Text(
-          'Update profile',
-          style: TextStyle(
-              fontWeight: FontWeight.w600, fontSize: 18, color: kblack),
-        ),
-        centerTitle: true,
-        leading: GestureDetector(
-          onTap: () {
-            Navigator.pop(context);
-          },
-          child: const Icon(
-            Icons.keyboard_arrow_left,
-            color: kblack,
-            size: 30,
-          ),
-        ),
-        elevation: 0,
-      ),
+      // appBar: AppBar(
+      //   backgroundColor: kblue,
+      //   title: const Text(
+      //     'Update profile',
+      //     style: TextStyle(
+      //         fontWeight: FontWeight.w600, fontSize: 18, color: kblack),
+      //   ),
+      //   centerTitle: true,
+      //   leading: GestureDetector(
+      //     onTap: () {
+      //       Navigator.pop(context);
+      //     },
+      //     child: const Icon(
+      //       Icons.keyboard_arrow_left,
+      //       color: kblack,
+      //       size: 30,
+      //     ),
+      //   ),
+      //   elevation: 0,
+      // ),
       body: SingleChildScrollView(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            SizedBox(
-              height: 40,
-            ),
-            Center(
+            Container(
+              height: MediaQuery.of(context).size.height * 0.35,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                    image: const AssetImage("assets/background.png"),
+                    colorFilter: ColorFilter.mode(
+                        Colors.black.withOpacity(0.2), BlendMode.color),
+                    fit: BoxFit.fill),
+              ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
+                  SizedBox(height: 20,),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.pop(context);
+                        },
+                        child: const Icon(
+                          Icons.keyboard_arrow_left,
+                          color: kwhite,
+                          size: 30,
+                        ),
+                      ),
+                      Text(
+                        'Update profile',
+                        style: TextStyle(
+                            fontWeight: FontWeight.w600,
+                            fontSize: 18,
+                            color: kwhite),
+                      ),
+                      SizedBox(
+                        width: 50,
+                      )
+                    ],
+                  ),
+                  SizedBox(height: 20,),
                   CircleAvatar(
                     radius: 46,
-                    backgroundColor: kblue,
+                    backgroundColor: kwhite,
                     child: ClipRRect(
                       clipBehavior: Clip.antiAlias,
                       borderRadius: BorderRadius.circular(85.0),

@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:handshake/components/reusable_button.dart';
@@ -11,6 +12,7 @@ import 'package:logger/logger.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../constants.dart';
+import 'package:flutter_multi_formatter/flutter_multi_formatter.dart';
 
 class Authentication extends StatefulWidget {
   const Authentication({Key? key}) : super(key: key);
@@ -51,219 +53,287 @@ class _AuthenticationState extends State<Authentication> {
 
     return Scaffold(
       key: _scaffoldKey,
-      backgroundColor: kwhite,
-      appBar: AppBar(
-        backgroundColor: kwhite,
-        title: const Text(
-          'Enter your number',
-          style: TextStyle(
-              fontWeight: FontWeight.w600, fontSize: 18, color: kblack),
-        ),
-        centerTitle: true,
-        leading: GestureDetector(
-          onTap: () {
-            Navigator.of(context, rootNavigator: true).pop();
-          },
-          child: const Icon(
-            Icons.keyboard_arrow_left,
-            color: kblack,
-            size: 30,
+      // backgroundColor: kwhite,
+      // // appBar: AppBar(
+      // //   backgroundColor: Colors.transparent,
+      //   title: const Text(
+      //     'Enter your number',
+      //     style: TextStyle(
+      //         fontWeight: FontWeight.w600, fontSize: 18, color: kblack),
+      //   ),
+      //   centerTitle: true,
+      //   leading: GestureDetector(
+      //     onTap: () {
+      //       Navigator.of(context, rootNavigator: true).pop();
+      //     },
+      //     child: const Icon(
+      //       Icons.keyboard_arrow_left,
+      //       color: kblack,
+      //       size: 30,
+      //     ),
+      //   ),
+      //   elevation: 0,
+      // ),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+
+
+          Expanded(
+            flex: 1,
+            child: Container(
+              decoration:BoxDecoration(
+                image: DecorationImage(
+                    image: const AssetImage("assets/background.png"),
+                    colorFilter: ColorFilter.mode(
+                        Colors.black.withOpacity(0.2), BlendMode.color),
+                    fit: BoxFit.fill),
+              ) ,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Center(
+                  child: Column(
+                    mainAxisAlignment:MainAxisAlignment.center ,
+                    children: [
+                      SizedBox(height: 30,),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text('ANTI',style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold
+                          ),),
+                          Text('-KIDNAP',style: TextStyle(
+                            color: Colors.red,
+                              // color: Color(0xfff38427),
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold
+                          ),),
+                        ],
+                      ),
+
+                      // Row(
+                      //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      //   children: [
+                      //     GestureDetector(
+                      //       onTap: () {
+                      //         Navigator.of(context, rootNavigator: true).pop();
+                      //       },
+                      //       child: const Icon(
+                      //         Icons.keyboard_arrow_left,
+                      //         color: kwhite,
+                      //         size: 30,
+                      //       ),
+                      //     ),
+                      //     const Text(
+                      //       'Enter your number',
+                      //       style: TextStyle(
+                      //           fontWeight: FontWeight.w600, fontSize: 18, color: Colors.white70),
+                      //     ),
+                      //     SizedBox(width:50 ,)
+                      //   ],
+                      // ),
+                      SizedBox( height: 30,),
+                      Text(
+                        'Anti-kidnap will need to verify your number',
+                        style: TextStyle(
+                            color: Colors.white70,
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold
+                        ),
+
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
           ),
-        ),
-        elevation: 0,
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const SizedBox(
-                height: 33,
-              ),
-              Center(
-                child: Container(
-                    width: 135,
-                    height: 18,
-                    decoration: const BoxDecoration(
-                      image: DecorationImage(
-                          image: AssetImage("assets/anti.png"),
-                          fit: BoxFit.fill),
-                    )),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              const Center(
-                  child: Text(
-                'Anti-kidnap will need to verify your number',
-                style: ksubheading,
-              )),
-              const SizedBox(
-                height: 50,
-              ),
-              // FormInput(
-              //   'Country',
-              //   loginController,
-              // ),
-              // SizedBox(
-              //   height: 15,
-              // ),
-              // FormInput(
-              //   'Phone number',
-              //   loginController,
-              // ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Text(
-                    "Country",
-                    style: TextStyle(
-                        fontWeight: FontWeight.w600,
-                        color: Colors.black87,
-                        fontSize: 12),
-                  ),
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  Container(
-                    height: 50,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(15),
-                        border: Border.all(color: kblue),
-                        color: inputColor),
-                    child: CountryCodePicker(
-                      showDropDownButton: true,
-                      backgroundColor: kwhite,
-                      flagWidth: 20,
-                      boxDecoration: const BoxDecoration(),
-                      onChanged: _onCountryChange,
-                      initialSelection: 'NG',
-                      favorite: ['+234', 'NG'],
-                      // optional. Shows only country name and flag
-                      showCountryOnly: true,
-                      // optional. Shows only country name and flag when popup is closed.
-                      showOnlyCountryWhenClosed: true,
-                      showFlag: false,
-                      // optional. aligns the flag and the Text left
-                      alignLeft: true,
+
+          // FormInput(
+          //   'Country',
+          //   loginController,
+          // ),
+          // SizedBox(
+          //   height: 15,
+          // ),
+          // FormInput(
+          //   'Phone number',
+          //   loginController,
+          // ),
+          // Column(
+          //   crossAxisAlignment: CrossAxisAlignment.start,
+          //   children: [
+          //     const Text(
+          //       "Country",
+          //       style: TextStyle(
+          //           fontWeight: FontWeight.w600,
+          //           color: Colors.black87,
+          //           fontSize: 12),
+          //     ),
+          //     const SizedBox(
+          //       height: 15,
+          //     ),
+          //     Container(
+          //       height: 50,
+          //       decoration: BoxDecoration(
+          //           borderRadius: BorderRadius.circular(15),
+          //           border: Border.all(color: kblue),
+          //           color: inputColor),
+          //       child: CountryCodePicker(
+          //         showDropDownButton: true,
+          //         backgroundColor: kwhite,
+          //         flagWidth: 20,
+          //         boxDecoration: const BoxDecoration(),
+          //         onChanged: _onCountryChange,
+          //         initialSelection: 'NG',
+          //         favorite: ['+234', 'NG'],
+          //         // optional. Shows only country name and flag
+          //         showCountryOnly: true,
+          //         // optional. Shows only country name and flag when popup is closed.
+          //         showOnlyCountryWhenClosed: true,
+          //         showFlag: false,
+          //         // optional. aligns the flag and the Text left
+          //         alignLeft: true,
+          //       ),
+          //     )
+          //   ],
+          // ),
+          // const SizedBox(
+          //   height: 20,
+          // ),
+          Expanded(
+            flex: 2,
+            child: Container(
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(height: 10,),
+                    const Text(
+                      "Phone number",
+                      style: TextStyle(
+                          fontWeight: FontWeight.w600,
+                          color: Colors.black87,
+                          fontSize: 14),
                     ),
-                  )
-                ],
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Text(
-                    "Phone number",
-                    style: TextStyle(
-                        fontWeight: FontWeight.w600,
-                        color: Colors.black87,
-                        fontSize: 12),
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Container(
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(15),
-                        border: Border.all(color: kblue),
-                        color: inputColor),
-                    child: Row(
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15),
+                          border: Border.all(color: kblue, width: 2),
+                          color: inputColor),
+                      child: Row(
+                        children: [
+                          // CountryCodePicker(
+                          //   showDropDownButton: false,
+                          //
+                          //   flagWidth: 20,
+                          //   showFlag: false,
+                          //   textStyle: TextStyle(fontSize: 14, color: Colors.black54),
+                          //   flagDecoration: BoxDecoration(
+                          //       borderRadius: BorderRadius.circular(5)),
+                          //   dialogTextStyle: TextStyle(fontSize: 20),
+                          //   onChanged: _onCountryChange,
+                          //   // Initial selection and favorite can be one of code ('IT') OR dial_code('+39')
+                          //   initialSelection: 'NG',
+                          //   favorite: ['+234', 'NG'],
+                          //   // optional. Shows only country name and flag
+                          //   showCountryOnly: false,
+                          //   // optional. Shows only country name and flag when popup is closed.
+                          //   showOnlyCountryWhenClosed: false,
+                          //   // optional. aligns the flag and the Text left
+                          //   alignLeft: false,
+                          // ),
+                          Expanded(
+
+                            child: TextFormField(
+                              style: TextStyle(
+                                  fontSize: 18, fontWeight: FontWeight.w400),
+                              controller: _phoneController,
+                              cursorColor: kblack,
+
+                              inputFormatters: [PhoneInputFormatter()],
+                              keyboardType: TextInputType.number,
+                              decoration: const InputDecoration(
+                                contentPadding: EdgeInsets.all(10),
+                                focusedBorder: InputBorder.none,
+                                border: InputBorder.none,
+                                hintText: '2349023000000'
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Row(
                       children: [
-                        CountryCodePicker(
-                          showDropDownButton: true,
-                          flagWidth: 20,
-                          flagDecoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(5)),
-                          onChanged: _onCountryChange,
-                          // Initial selection and favorite can be one of code ('IT') OR dial_code('+39')
-                          initialSelection: 'NG',
-                          favorite: ['+234', 'NG'],
-                          // optional. Shows only country name and flag
-                          showCountryOnly: false,
-                          // optional. Shows only country name and flag when popup is closed.
-                          showOnlyCountryWhenClosed: false,
-                          // optional. aligns the flag and the Text left
-                          alignLeft: false,
+                        Checkbox(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(2.0),
+                          ),
+                          side: MaterialStateBorderSide.resolveWith(
+                                (states) => const BorderSide(width: 2.0, color: kblue),
+                          ),
+                          checkColor: kblue,
+                          fillColor: MaterialStateProperty.resolveWith(getColor),
+                          value: _isTocAccepted,
+                          onChanged: (bool? value) {
+                            setState(() {
+                              _isTocAccepted = value!;
+                            });
+                          },
                         ),
                         Expanded(
-                          child: TextFormField(
-                            controller: _phoneController,
-                            cursorColor: kblack,
-                            keyboardType: TextInputType.number,
-                            decoration: const InputDecoration(
-                              focusedBorder: InputBorder.none,
-                              border: InputBorder.none,
+                          child: RichText(
+                            text: TextSpan(
+                              text: 'I have read and accepted ',
+                              style: const TextStyle(
+                                color: Colors.black,
+                              ),
+                              children: <TextSpan>[
+                                TextSpan(
+                                  text: 'www.antikidnap.com',
+                                  style: const TextStyle(
+                                    decoration: TextDecoration.underline,
+                                    color: kblue,
+                                  ),
+                                  recognizer: TapGestureRecognizer()
+                                    ..onTap = () async {
+                                      await launch('http://www.antikidnap.com');
+                                    },
+                                ),
+                                const TextSpan(text: ' Terms and Conditions'),
+                              ],
                             ),
                           ),
                         ),
                       ],
                     ),
-                  ),
-                ],
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              Row(
-                children: [
-                  Checkbox(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(2.0),
+                    const SizedBox(
+                      height: 20,
                     ),
-                    side: MaterialStateBorderSide.resolveWith(
-                      (states) => const BorderSide(width: 2.0, color: kblue),
+
+                    const SizedBox(
+                      height: 50,
                     ),
-                    checkColor: Colors.lightBlueAccent,
-                    fillColor: MaterialStateProperty.resolveWith(getColor),
-                    value: _isTocAccepted,
-                    onChanged: (bool? value) {
-                      setState(() {
-                        _isTocAccepted = value!;
-                      });
-                    },
-                  ),
-                  Expanded(
-                    child: RichText(
-                      text: TextSpan(
-                        text: 'I have read and accepted ',
-                        style: const TextStyle(
-                          color: Colors.black,
-                        ),
-                        children: <TextSpan>[
-                          TextSpan(
-                            text: 'www.antikidnap.com',
-                            style: const TextStyle(
-                              decoration: TextDecoration.underline,
-                              color: Colors.lightBlueAccent,
-                            ),
-                            recognizer: TapGestureRecognizer()
-                              ..onTap = () async {
-                                await launch('http://www.antikidnap.com');
-                              },
-                          ),
-                          const TextSpan(text: ' Terms and Conditions'),
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
+                    OtherButton(
+                        onPressedFunction: () {
+                          _sendCode(context);
+                        },
+                        label: 'Continue')
+
+                  ],
+                ),
               ),
-              const SizedBox(
-                height: 50,
-              ),
-              OtherButton(
-                  onPressedFunction: () {
-                    _sendCode(context);
-                  },
-                  label: 'Continue')
-            ],
+            ),
           ),
-        ),
+
+        ],
       ),
     );
   }

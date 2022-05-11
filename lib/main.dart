@@ -1,3 +1,7 @@
+
+
+
+
 import 'package:flutter/material.dart';
 
 import 'package:handshake/screen/authentication.dart';
@@ -45,7 +49,7 @@ class MyApp extends StatelessWidget {
         "/success": (ctx) => const CustomDailog(),
         "/qr-code": (ctx) => const QrCodeScreen(),
       },
-      home: SplashScreen(),
+      home: Authentication(),
     );
   }
 }

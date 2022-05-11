@@ -7,6 +7,7 @@ class FormInput extends StatelessWidget {
   TextEditingController controller;
   bool enabled;
 
+
   FormInput(this.label, this.controller, {this.enabled = true, this.hint = ''});
 
   @override
@@ -21,7 +22,7 @@ class FormInput extends StatelessWidget {
             style: const TextStyle(
                 fontWeight: FontWeight.w600,
                 color: Colors.black87,
-                fontSize: 12),
+                fontSize: 14),
           ),
           SizedBox(
             height: 10,
@@ -29,7 +30,7 @@ class FormInput extends StatelessWidget {
           Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(15),
-              border: Border.all(color: kblue),
+              border: Border.all(color: kblue, width: 2),
               color: inputColor,
             ),
             child: Padding(

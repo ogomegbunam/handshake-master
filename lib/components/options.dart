@@ -14,7 +14,7 @@ class Options extends StatefulWidget {
 }
 
 class _OptionsState extends State<Options> {
-  String _selectedValue = '';
+  String _selectedValue = 'No';
 
   @override
   Widget build(BuildContext context) {

@@ -61,8 +61,9 @@ class _CompleteProfileState extends State<CompleteProfile> {
     return Scaffold(
       key: _scaffoldKey,
       backgroundColor: kwhite,
+
       appBar: AppBar(
-        backgroundColor: kwhite,
+        backgroundColor: Colors.transparent,
         title: const Text(
           'Create a profile',
           style: TextStyle(
@@ -149,13 +150,20 @@ class _CompleteProfileState extends State<CompleteProfile> {
                     onValueChanged: (String value) {
                       Logger().i('value is $value');
                       isBusiness = value == 'Yes';
+                      setState(() {
+
+                      });
                     },
                   ),
                   SizedBox(
                     height: 10,
                   ),
-                  FormInput('Business Name', businessNameController),
-                  FormInput('Business Address', businessAddressController),
+                  Visibility(
+                     visible: ( isBusiness ),
+                      child: FormInput('Business Name', businessNameController)),
+                  Visibility(
+                    visible: (isBusiness),
+                      child: FormInput('Business Address', businessAddressController)),
                   Text(
                     'Do you use your vehicle for Transportation?',
                     style: ksubheading,
@@ -167,12 +175,17 @@ class _CompleteProfileState extends State<CompleteProfile> {
                     onValueChanged: (String value) {
                       Logger().i('value is $value');
                       isVehicle = value == 'Yes';
+                      setState(() {
+
+                      });
                     },
                   ),
                   SizedBox(
                     height: 10,
                   ),
-                  FormInput('Vehicle\'s Plate Number', vehicleController),
+                  Visibility(
+                    visible: (isVehicle),
+                      child: FormInput('Vehicle\'s Plate Number', vehicleController)),
                   SizedBox(
                     height: 40,
                   ),
