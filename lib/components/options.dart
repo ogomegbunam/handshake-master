@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:handshake/constants.dart';
 import 'package:handshake/utils/callbacks.dart';
@@ -46,7 +45,7 @@ class _OptionsState extends State<Options> {
                         : Icons.radio_button_off,
                     color: _selectedValue == 'Yes' ? kblue : Colors.grey,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 10,
                   ),
                   Text(
@@ -85,7 +84,7 @@ class _OptionsState extends State<Options> {
                       : Icons.radio_button_off,
                   color: _selectedValue == 'No' ? kblue : Colors.grey,
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 10,
                 ),
                 Text(

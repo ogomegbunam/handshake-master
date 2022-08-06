@@ -3,7 +3,7 @@ import 'package:handshake/constants.dart';
 
 
 class Checker extends StatefulWidget {
-  Checker({Key? key}) : super(key: key);
+  const Checker({Key? key}) : super(key: key);
 
   @override
   _CheckerState createState() => _CheckerState();
@@ -16,7 +16,7 @@ class _CheckerState extends State<Checker> {
     return Checkbox(
       splashRadius: 30,
       activeColor: kblue,
-      shape: CircleBorder(),
+      shape: const CircleBorder(),
       value: _checkbox,
       tristate: true,
       onChanged: (value) {

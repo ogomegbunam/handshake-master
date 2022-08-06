@@ -16,7 +16,7 @@ Widget build(BuildContext context) {
   Size size = MediaQuery.of(context).size;
   return MaterialButton(
 
-    padding: EdgeInsets.symmetric(vertical: 13.5),
+    padding: const EdgeInsets.symmetric(vertical: 13.5),
     minWidth: double.infinity,
     height: 50,
     onPressed: onpressedfunction,
@@ -37,9 +37,9 @@ Widget build(BuildContext context) {
             width: 18,
             cacheColorFilter: true,
           ),
-          SizedBox(width: 20,),
+          const SizedBox(width: 20,),
 
-          Text(label, style: TextStyle(
+          Text(label, style: const TextStyle(
               fontWeight: FontWeight.w600,
               fontSize: 18,
               color: Colors.white

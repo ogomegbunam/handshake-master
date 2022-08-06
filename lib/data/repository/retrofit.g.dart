@@ -19,17 +19,17 @@ class _RestClient implements RestClient {
 
   @override
   Future<String> createAccount(
-      full_name,
+      fullName,
       email,
       address,
       code,
-      nok_phone_number,
-      nok_alternate_phone_number,
-      is_business,
-      business_name,
-      business_address,
-      is_vehicle_transport,
-      vehicle_plate_number,
+      nokPhoneNumber,
+      nokAlternatePhoneNumber,
+      isBusiness,
+      businessName,
+      businessAddress,
+      isVehicleTransport,
+      vehiclePlateNumber,
       file,
       {onSendProgress}) async {
     const _extra = <String, dynamic>{};
@@ -41,19 +41,19 @@ class _RestClient implements RestClient {
     };
     _headers.removeWhere((k, v) => v == null);
     final _data = FormData();
-    _data.fields.add(MapEntry('full_name', full_name));
+    _data.fields.add(MapEntry('full_name', fullName));
     _data.fields.add(MapEntry('email', email));
     _data.fields.add(MapEntry('address', address));
     _data.fields.add(MapEntry('code', code));
-    _data.fields.add(MapEntry('nok_phone_number', nok_phone_number));
+    _data.fields.add(MapEntry('nok_phone_number', nokPhoneNumber));
     _data.fields.add(
-        MapEntry('nok_alternate_phone_number', nok_alternate_phone_number));
-    _data.fields.add(MapEntry('is_business', is_business.toString()));
-    _data.fields.add(MapEntry('business_name', business_name));
-    _data.fields.add(MapEntry('business_address', business_address));
+        MapEntry('nok_alternate_phone_number', nokAlternatePhoneNumber));
+    _data.fields.add(MapEntry('is_business', isBusiness.toString()));
+    _data.fields.add(MapEntry('business_name', businessName));
+    _data.fields.add(MapEntry('business_address', businessAddress));
     _data.fields
-        .add(MapEntry('is_vehicle_transport', is_vehicle_transport.toString()));
-    _data.fields.add(MapEntry('vehicle_plate_number', vehicle_plate_number));
+        .add(MapEntry('is_vehicle_transport', isVehicleTransport.toString()));
+    _data.fields.add(MapEntry('vehicle_plate_number', vehiclePlateNumber));
     _data.files.add(MapEntry(
         'file',
         MultipartFile.fromFileSync(file.path,
@@ -75,13 +75,13 @@ class _RestClient implements RestClient {
   @override
   Future<String> updateProfile(
       token,
-      full_name,
+      fullName,
       address,
-      nok_phone_number,
-      nok_alternate_phone_number,
-      business_name,
-      business_address,
-      vehicle_plate_number) async {
+      nokPhoneNumber,
+      nokAlternatePhoneNumber,
+      businessName,
+      businessAddress,
+      vehiclePlateNumber) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{
@@ -91,13 +91,13 @@ class _RestClient implements RestClient {
     };
     _headers.removeWhere((k, v) => v == null);
     final _data = {
-      'full_name': full_name,
+      'full_name': fullName,
       'address': address,
-      'nok_phone_number': nok_phone_number,
-      'nok_alternate_phone_number': nok_alternate_phone_number,
-      'business_name': business_name,
-      'business_address': business_address,
-      'vehicle_plate_number': vehicle_plate_number
+      'nok_phone_number': nokPhoneNumber,
+      'nok_alternate_phone_number': nokAlternatePhoneNumber,
+      'business_name': businessName,
+      'business_address': businessAddress,
+      'vehicle_plate_number': vehiclePlateNumber
     };
     final _result = await _dio.fetch<String>(_setStreamType<String>(Options(
             method: 'POST',
@@ -112,7 +112,7 @@ class _RestClient implements RestClient {
   }
 
   @override
-  Future<String> requestVerificationCode(phone_number) async {
+  Future<String> requestVerificationCode(phoneNumber) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{
@@ -120,7 +120,7 @@ class _RestClient implements RestClient {
       r'Accept': 'application/json'
     };
     _headers.removeWhere((k, v) => v == null);
-    final _data = {'phone_number': phone_number};
+    final _data = {'phone_number': phoneNumber};
     final _result = await _dio.fetch<String>(_setStreamType<String>(Options(
             method: 'POST',
             headers: _headers,
@@ -134,7 +134,7 @@ class _RestClient implements RestClient {
   }
 
   @override
-  Future<String> verifyOtpCode(phone_number, code) async {
+  Future<String> verifyOtpCode(phoneNumber, code) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{
@@ -142,7 +142,7 @@ class _RestClient implements RestClient {
       r'Accept': 'application/json'
     };
     _headers.removeWhere((k, v) => v == null);
-    final _data = {'phone_number': phone_number, 'code': code};
+    final _data = {'phone_number': phoneNumber, 'code': code};
     final _result = await _dio.fetch<String>(_setStreamType<String>(Options(
             method: 'POST',
             headers: _headers,
@@ -156,7 +156,7 @@ class _RestClient implements RestClient {
   }
 
   @override
-  Future<String> raiseAlarm(token, alarm_type) async {
+  Future<String> raiseAlarm(token, alarmType) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{
@@ -165,7 +165,7 @@ class _RestClient implements RestClient {
       r'Authorization': token
     };
     _headers.removeWhere((k, v) => v == null);
-    final _data = {'alarm_type': alarm_type};
+    final _data = {'alarm_type': alarmType};
     final _result = await _dio.fetch<String>(_setStreamType<String>(Options(
             method: 'POST',
             headers: _headers,
@@ -179,7 +179,7 @@ class _RestClient implements RestClient {
   }
 
   @override
-  Future<String> confirmContact(token, connect_uid) async {
+  Future<String> confirmContact(token, connectUid) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{
@@ -188,7 +188,7 @@ class _RestClient implements RestClient {
       r'Authorization': token
     };
     _headers.removeWhere((k, v) => v == null);
-    final _data = {'connect_uid': connect_uid};
+    final _data = {'connect_uid': connectUid};
     final _result = await _dio.fetch<String>(_setStreamType<String>(Options(
             method: 'POST',
             headers: _headers,
@@ -202,7 +202,7 @@ class _RestClient implements RestClient {
   }
 
   @override
-  Future<String> verifyQrCode(token, qr_code) async {
+  Future<String> verifyQrCode(token, qrCode) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{
@@ -211,7 +211,7 @@ class _RestClient implements RestClient {
       r'Authorization': token
     };
     _headers.removeWhere((k, v) => v == null);
-    final _data = {'qr_code': qr_code};
+    final _data = {'qr_code': qrCode};
     final _result = await _dio.fetch<String>(_setStreamType<String>(Options(
             method: 'POST',
             headers: _headers,

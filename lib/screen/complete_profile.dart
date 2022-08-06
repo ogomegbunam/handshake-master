@@ -86,7 +86,7 @@ class _CompleteProfileState extends State<CompleteProfile> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            SizedBox(
+            const SizedBox(
               height: 40,
             ),
             Center(
@@ -114,7 +114,7 @@ class _CompleteProfileState extends State<CompleteProfile> {
                       pickImage(ImageSource.camera);
                     },
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 25,
                   ),
                   const Text(
@@ -124,7 +124,7 @@ class _CompleteProfileState extends State<CompleteProfile> {
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Padding(
@@ -143,7 +143,7 @@ class _CompleteProfileState extends State<CompleteProfile> {
                     'Do you have a business?',
                     style: ksubheading,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   options.Options(
@@ -155,7 +155,7 @@ class _CompleteProfileState extends State<CompleteProfile> {
                       });
                     },
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   Visibility(
@@ -164,11 +164,11 @@ class _CompleteProfileState extends State<CompleteProfile> {
                   Visibility(
                     visible: (isBusiness),
                       child: FormInput('Business Address', businessAddressController)),
-                  Text(
+                  const Text(
                     'Do you use your vehicle for Transportation?',
                     style: ksubheading,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   options.Options(
@@ -180,13 +180,13 @@ class _CompleteProfileState extends State<CompleteProfile> {
                       });
                     },
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   Visibility(
                     visible: (isVehicle),
                       child: FormInput('Vehicle\'s Plate Number', vehicleController)),
-                  SizedBox(
+                  const SizedBox(
                     height: 40,
                   ),
                   OtherButton(

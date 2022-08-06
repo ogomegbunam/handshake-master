@@ -12,19 +12,19 @@ class FormInput extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: double.infinity,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            "${label}",
+            label,
             style: const TextStyle(
                 fontWeight: FontWeight.w600,
                 color: Colors.black87,
                 fontSize: 14),
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           Container(
@@ -55,7 +55,7 @@ class FormInput extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           )
         ],

@@ -1,20 +1,15 @@
 import 'dart:convert';
-import 'dart:io';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:handshake/components/form_input.dart';
-import 'package:handshake/components/options.dart' as options;
 import 'package:handshake/components/reusable_button.dart';
-import 'package:handshake/data/models/responses/access_token_model.dart';
 import 'package:handshake/data/models/responses/user_model.dart';
 import 'package:handshake/data/models/responses/user_model2.dart';
 import 'package:handshake/data/repository/app_repository.dart';
 import 'package:handshake/data/repository/session.dart';
 import 'package:handshake/utils/function_utils.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:logger/logger.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../constants.dart';
@@ -97,7 +92,7 @@ class _UpdateProfileState extends State<UpdateProfile> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  SizedBox(height: 20,),
+                  const SizedBox(height: 20,),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -111,19 +106,19 @@ class _UpdateProfileState extends State<UpdateProfile> {
                           size: 30,
                         ),
                       ),
-                      Text(
+                      const Text(
                         'Update profile',
                         style: TextStyle(
                             fontWeight: FontWeight.w600,
                             fontSize: 18,
                             color: kwhite),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 50,
                       )
                     ],
                   ),
-                  SizedBox(height: 20,),
+                  const SizedBox(height: 20,),
                   CircleAvatar(
                     radius: 46,
                     backgroundColor: kwhite,
@@ -150,7 +145,7 @@ class _UpdateProfileState extends State<UpdateProfile> {
                             ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 25,
                   ),
                   const Text(
@@ -160,7 +155,7 @@ class _UpdateProfileState extends State<UpdateProfile> {
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Padding(
@@ -183,7 +178,7 @@ class _UpdateProfileState extends State<UpdateProfile> {
                   FormInput('Business Name', businessNameController),
                   FormInput('Business Address', businessAddressController),
                   FormInput('Vehicle\'s Plate Number', vehicleController),
-                  SizedBox(
+                  const SizedBox(
                     height: 40,
                   ),
                   OtherButton(
@@ -268,7 +263,7 @@ class _UpdateProfileState extends State<UpdateProfile> {
           Logger().e("Got error : ${res?.statusCode} -> ${res?.statusMessage}");
           break;
         default:
-          Logger().e("Got error : ${obj}");
+          Logger().e("Got error : $obj");
           break;
       }
     });

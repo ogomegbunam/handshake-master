@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:handshake/components/reusable_button.dart';
 import 'package:handshake/data/models/responses/access_token_model.dart';
@@ -59,7 +58,7 @@ class _OtpVerificationState extends State<OtpVerification> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(
+              const SizedBox(
                 height: 33,
               ),
               Center(
@@ -72,34 +71,34 @@ class _OtpVerificationState extends State<OtpVerification> {
                           fit: BoxFit.fill),
                     )),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               Center(
                   child: Row(
                 children: [
-                  Text(
+                  const Text(
                     'Enter the verification code sent to ',
                     style: ksubheading,
                   ),
                   Text(
                     '+234$phone',
-                    style: TextStyle(
+                    style: const TextStyle(
                         fontWeight: FontWeight.w600,
                         fontSize: 14,
                         color: kblack),
                   )
                 ],
               )),
-              SizedBox(
+              const SizedBox(
                 height: 25,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 30,
               ),
               PinCodeTextField(
                 appContext: context,
-                pastedTextStyle: TextStyle(
+                pastedTextStyle: const TextStyle(
                   color: inputColor,
                   fontWeight: FontWeight.bold,
                 ),
@@ -157,7 +156,7 @@ class _OtpVerificationState extends State<OtpVerification> {
                   return true;
                 },
               ),
-              SizedBox(
+              const SizedBox(
                 height: 50,
               ),
               OtherButton(
@@ -165,7 +164,7 @@ class _OtpVerificationState extends State<OtpVerification> {
                     _verifyCode(context);
                   },
                   label: 'Verify'),
-              SizedBox(
+              const SizedBox(
                 height: 40,
               ),
               Row(
@@ -244,7 +243,7 @@ class _OtpVerificationState extends State<OtpVerification> {
           Logger().e("Got error : ${res?.statusCode} -> ${res?.statusMessage}");
           break;
         default:
-          Logger().e("Got error : ${obj}");
+          Logger().e("Got error : $obj");
           break;
       }
     });

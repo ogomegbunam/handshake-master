@@ -28,7 +28,7 @@ class ConfirmHandShake extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: Column(
               children: [
-                SizedBox(
+                const SizedBox(
                   height: 30,
                 ),
                 CircleAvatar(
@@ -37,7 +37,7 @@ class ConfirmHandShake extends StatelessWidget {
                   child: ClipRRect(
                     clipBehavior: Clip.antiAlias,
                     borderRadius: BorderRadius.circular(85.0),
-                    child: user != null && user.avatar.isNotEmpty
+                    child: user.avatar.isNotEmpty
                         ? CachedNetworkImage(
                             height: 85,
                             width: 85,
@@ -57,7 +57,7 @@ class ConfirmHandShake extends StatelessWidget {
                           ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 ProfileDisplay(
@@ -70,11 +70,11 @@ class ConfirmHandShake extends StatelessWidget {
                   message: user.phone_number,
                 ),
                 ProfileDisplay(
-                  label: "Next of Kin\'s Whatsapp Number 1",
+                  label: "Next of Kin's Whatsapp Number 1",
                   message: user.nok_phone_number,
                 ),
                 ProfileDisplay(
-                  label: "Next of Kin\'s Whatsapp Number 2",
+                  label: "Next of Kin's Whatsapp Number 2",
                   message: user.nok_alternate_phone_number,
                 ),
                 ProfileDisplay(
@@ -94,10 +94,10 @@ class ConfirmHandShake extends StatelessWidget {
                   message: user.vehicle_plate_number != null ? 'Yes' : 'No',
                 ),
                 ProfileDisplay(
-                  label: "Vehicle\'s Plate Number",
+                  label: "Vehicle's Plate Number",
                   message: user.vehicle_plate_number ?? '',
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 const Text(
@@ -108,7 +108,7 @@ class ConfirmHandShake extends StatelessWidget {
                     color: kblue,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 30,
                 ),
                 Padding(
@@ -120,7 +120,7 @@ class ConfirmHandShake extends StatelessWidget {
                     },
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 30,
                 ),
                 Padding(

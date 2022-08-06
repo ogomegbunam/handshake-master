@@ -54,6 +54,8 @@ dependencies:
   image_gallery_saver:
     path: packages/image_gallery_saver
   flutter_multi_formatter: ^2.5.1
+  modal_bottom_sheet: ^2.0.1
+
 
 
 

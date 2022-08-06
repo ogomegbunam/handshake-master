@@ -33,7 +33,7 @@ class Homescreen extends StatelessWidget {
                     },
                     label: 'Handshake for Security',
                     asset: 'assets/camera.svg'),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 HomeButton(
@@ -42,7 +42,7 @@ class Homescreen extends StatelessWidget {
                     },
                     label: '      Raise alarm1',
                     asset: 'assets/notification.svg'),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 HomeButton(
@@ -51,7 +51,7 @@ class Homescreen extends StatelessWidget {
                     },
                     label: '      Raise alarm2',
                     asset: 'assets/notification.svg'),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 HomeButton(
@@ -60,7 +60,7 @@ class Homescreen extends StatelessWidget {
                     },
                     label: '      Update Profile',
                     asset: 'assets/profile.svg'),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 HomeButton(
@@ -78,12 +78,12 @@ class Homescreen extends StatelessWidget {
     );
   }
 
-  Future<void> _raiseAlarm(BuildContext context, String alarm_type) async {
+  Future<void> _raiseAlarm(BuildContext context, String alarmType) async {
     FocusManager.instance.primaryFocus!.unfocus();
     String url;
     String text =
         'Your friend ${SessionManager.instance.user!.full_name} has pressed A distress Alarm button on AntiKidnap App. Try to reach him/her through mobile calls, and contact relatives. AntiKidnap suggests you validate this message before raising an alarm.';
-    if (alarm_type == 'alarm_1') {
+    if (alarmType == 'alarm_1') {
       url =
           "https://wa.me/${SessionManager.instance.user!.nok_phone_number}?text=$text";
     } else {

@@ -1,7 +1,3 @@
-
-
-
-
 import 'package:flutter/material.dart';
 
 import 'package:handshake/screen/authentication.dart';
@@ -11,7 +7,6 @@ import 'package:handshake/screen/congratulations.dart';
 import 'package:handshake/screen/home_screen.dart';
 import 'package:handshake/screen/otp_verification.dart';
 import 'package:handshake/screen/qr_code_screen.dart';
-import 'package:handshake/screen/splash_screen.dart';
 import 'package:handshake/screen/update_profile.dart';
 
 void main() {
@@ -40,7 +35,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       routes: {
-        "/auth": (ctx) => Authentication(),
+        "/auth": (ctx) => const Authentication(),
         "/otp": (ctx) => const OtpVerification(),
         "/completeprofile": (ctx) => const CompleteProfile(),
         "/home": (ctx) => Homescreen(),
@@ -49,7 +44,7 @@ class MyApp extends StatelessWidget {
         "/success": (ctx) => const CustomDailog(),
         "/qr-code": (ctx) => const QrCodeScreen(),
       },
-      home: Authentication(),
+      home: const Authentication(),
     );
   }
 }

@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:handshake/components/reusable_button.dart';
@@ -95,10 +94,10 @@ class _AuthenticationState extends State<Authentication> {
                   child: Column(
                     mainAxisAlignment:MainAxisAlignment.center ,
                     children: [
-                      SizedBox(height: 30,),
+                      const SizedBox(height: 30,),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
+                        children: const [
                           Text('ANTI',style: TextStyle(
                               color: Colors.white,
                               fontSize: 20,
@@ -134,8 +133,8 @@ class _AuthenticationState extends State<Authentication> {
                       //     SizedBox(width:50 ,)
                       //   ],
                       // ),
-                      SizedBox( height: 30,),
-                      Text(
+                      const SizedBox( height: 30,),
+                      const Text(
                         'Anti-kidnap will need to verify your number',
                         style: TextStyle(
                             color: Colors.white70,
@@ -211,7 +210,7 @@ class _AuthenticationState extends State<Authentication> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(height: 10,),
+                    const SizedBox(height: 10,),
                     const Text(
                       "Phone number",
                       style: TextStyle(
@@ -252,7 +251,7 @@ class _AuthenticationState extends State<Authentication> {
                           Expanded(
 
                             child: TextFormField(
-                              style: TextStyle(
+                              style: const TextStyle(
                                   fontSize: 18, fontWeight: FontWeight.w400),
                               controller: _phoneController,
                               cursorColor: kblack,
@@ -377,7 +376,7 @@ class _AuthenticationState extends State<Authentication> {
               "Got error : ${res?.statusCode} -> ${res?.statusMessage}\n ${res?.data}");
           break;
         default:
-          Logger().e("Got error : ${obj}");
+          Logger().e("Got error : $obj");
           break;
       }
     });

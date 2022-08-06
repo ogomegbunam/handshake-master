@@ -35,7 +35,7 @@ class ProfileDisplay extends StatelessWidget {
                   color: color,
                   child: Padding(
                     padding: const EdgeInsets.all(15.0),
-                    child: Text(message!,style: TextStyle( fontWeight: FontWeight.w600,fontSize: 12,
+                    child: Text(message!,style: const TextStyle( fontWeight: FontWeight.w600,fontSize: 12,
                     color: Colors.grey),),
                   )),
             ],
